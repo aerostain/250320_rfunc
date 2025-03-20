@@ -1,0 +1,69 @@
+---
+title: "Informe"
+format: 
+  html:
+    toc: true
+    toc-location: left
+---
+
+### Directorio
+```{r}
+getwd()
+dir.create("Rdownloads")
+file.create("test.R")
+dir()
+
+options("width" = 10000)
+getOption("width")
+```
+
+### .lintr
+```{r}
+# .lintr
+text <- c(
+  "linters: linters_with_defaults(",
+  "  assignment_linter(allow_pipe_assign = TRUE)",
+  "  )"
+)
+
+pathfile <- file.path(getwd(), ".lintr")
+
+writeLines(text, pathfile)
+```
+
+### Cargar librerías
+```{r}
+#| warning: false
+#| message: false
+library(tidyverse)
+library(magrittr)
+library(ggdark)
+library(expss)
+# library()
+```
+
+### Dataclean
+```{r}
+d <- diamonds
+d %>% str()
+
+d %>%
+  cross_cases(cut, color)
+
+d %>%
+  cross_cases(cut, clarity)
+
+d %>%
+  cross_cases(clarity, color)
+
+d %>%
+  cross_cases(clarity, list(color, cut))
+
+d %>%
+  cross_cases(list(color, cut), clarity)
+
+d %>%
+  cross_cases(color %nest% cut, clarity)
+
+
+```
