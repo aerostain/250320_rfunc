@@ -8,6 +8,7 @@ format:
 
 ### Directorio
 ```{r}
+#| eval: false
 getwd()
 dir.create("Rdownloads")
 file.create("test.R")
@@ -42,7 +43,7 @@ library(expss)
 # library()
 ```
 
-### Dataclean
+### Consistencia
 ```{r}
 d <- diamonds
 d %>% str()
@@ -65,5 +66,10 @@ d %>%
 d %>%
   cross_cases(color %nest% cut, clarity)
 
+```
+
+### Funciones
+
+```{r}
 
 ```
